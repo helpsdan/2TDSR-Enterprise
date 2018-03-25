@@ -1,10 +1,13 @@
 package br.com.fiap.jpa.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -26,6 +29,9 @@ public class Veiculo {
 	@Column(name="nr_ano")
 	private int ano;
 
+	@ManyToMany(mappedBy="veiculo")
+	private List<Motorista> motorista;
+	
 	public Veiculo(String placa, String cor, int ano) {
 		super();
 		this.placa = placa;
@@ -67,6 +73,14 @@ public class Veiculo {
 
 	public void setAno(int ano) {
 		this.ano = ano;
+	}
+
+	public List<Motorista> getMotorista() {
+		return motorista;
+	}
+
+	public void setMotorista(List<Motorista> motorista) {
+		this.motorista = motorista;
 	}
 	
 	

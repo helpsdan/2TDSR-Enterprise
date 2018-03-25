@@ -1,6 +1,7 @@
 package br.com.fiap.jpa.entity;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,6 +36,9 @@ public class Passageiro {
 	@Enumerated(EnumType.STRING)
 	@Column(name="ds_genero")
 	private Genero genero;
+	
+	@OneToMany(mappedBy="passageiro")
+	private List<Corrida> corrida;
 
 	public Passageiro(String nome, Calendar dataNascimento, Genero genero) {
 		super();
@@ -77,5 +82,15 @@ public class Passageiro {
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
+
+	public List<Corrida> getCorrida() {
+		return corrida;
+	}
+
+	public void setCorrida(List<Corrida> corrida) {
+		this.corrida = corrida;
+	}
+
+
 	
 }

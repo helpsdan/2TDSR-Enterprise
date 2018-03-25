@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,6 +37,10 @@ public class Pagamento {
 	@Column(name = "ds_forma_pagamento",nullable=false)
 	private FormaPagamento formaPagamento;
 
+	@OneToOne
+	@JoinColumn(name="cd_corrida")
+	private Corrida corrida;
+	
 	public Pagamento() {
 		super();
 
@@ -77,6 +83,14 @@ public class Pagamento {
 
 	public void setFormaPagamento(FormaPagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
+	}
+
+	public Corrida getCorrida() {
+		return corrida;
+	}
+
+	public void setCorrida(Corrida corrida) {
+		this.corrida = corrida;
 	}
 
 }

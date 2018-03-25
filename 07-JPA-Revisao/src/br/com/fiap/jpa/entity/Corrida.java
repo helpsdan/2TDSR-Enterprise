@@ -1,11 +1,16 @@
 package br.com.fiap.jpa.entity;
 
 import java.util.Calendar;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,6 +39,17 @@ public class Corrida {
 	@Column(name = "vl_corrida",nullable=false)
 	private float valor;
 
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="cd_passageiro")
+	private Passageiro passageiro;
+	
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="cd_motorista")
+	private Motorista motorista;
+	
+	@OneToOne(mappedBy="corrida", cascade=CascadeType.PERSIST)
+	private Pagamento pagamento;
+	
 	public Corrida(String origem, String destino, Calendar dataCorrida, float valor) {
 		super();
 		this.origem = origem;
@@ -85,6 +101,30 @@ public class Corrida {
 
 	public void setValor(float valor) {
 		this.valor = valor;
+	}
+
+	public Passageiro getPassageiro() {
+		return passageiro;
+	}
+
+	public void setPassageiro(Passageiro passageiro) {
+		this.passageiro = passageiro;
+	}
+
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	public Motorista getMotorista() {
+		return motorista;
+	}
+
+	public void setMotorista(Motorista motorista) {
+		this.motorista = motorista;
 	}
 
 }
