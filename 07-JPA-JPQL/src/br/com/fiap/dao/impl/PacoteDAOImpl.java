@@ -37,6 +37,11 @@ public class PacoteDAOImpl extends GenericDAOImpl<Pacote,Integer> implements Pac
 				,Double.class).getSingleResult();
 	}
 
+	@Override
+	public long contarPorTransporte() {
+		return em.createNamedQuery("Pacote.contarPorTransporte", Long.class).getSingleResult();
+	}
+
 }
 
 
