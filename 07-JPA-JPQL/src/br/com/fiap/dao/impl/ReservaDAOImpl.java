@@ -33,9 +33,10 @@ public class ReservaDAOImpl extends GenericDAOImpl<Reserva,Integer> implements R
 
 	@Override
 	public List<Reserva> buscarPorCidade(String cidade) {
-		return em.createNamedQuery("Reserva.porCidade", Reserva.class)
-				.setParameter("j", cidade)
-				.getResultList();
+		return em.createNamedQuery(
+			"Reserva.porCidade",Reserva.class)
+			.setParameter("churros", cidade)
+			.getResultList();
 	}
 
 }

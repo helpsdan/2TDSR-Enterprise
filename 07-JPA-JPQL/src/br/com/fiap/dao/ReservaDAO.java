@@ -11,7 +11,12 @@ public interface ReservaDAO extends GenericDAO<Reserva,Integer>{
 	
 	long contarQuantidadePorData(Calendar inicio, Calendar fim);
 	
-	//LISTAR RESERVAS POR CIDADE DO CLIENTE
+	//Listar as reservas por cidade do cliente
 	List<Reserva> buscarPorCidade(String cidade);
 	
 }
+
+
+
+
+
