@@ -3,22 +3,23 @@ package br.com.fiap.jpa.entity;
 import java.io.Serializable;
 import java.util.Calendar;
 
-public class ConsultaPK implements Serializable	{
-	
+public class ConsultaPK implements Serializable {
+
 	private int medico;
 	
 	private int paciente;
 	
-	private Calendar dataConsulta;
+	private Calendar data;
+
+	public ConsultaPK(int medico, int paciente, Calendar data) {
+		super();
+		this.medico = medico;
+		this.paciente = paciente;
+		this.data = data;
+	}
 
 	public ConsultaPK() {
 		super();
-	}
-	
-	public ConsultaPK(int medico, int paciente, Calendar dataConsulta) {
-		this.medico = medico;
-		this.paciente = paciente;
-		this.dataConsulta = dataConsulta;
 	}
 
 	public int getMedico() {
@@ -37,19 +38,19 @@ public class ConsultaPK implements Serializable	{
 		this.paciente = paciente;
 	}
 
-	public Calendar getDataConsulta() {
-		return dataConsulta;
+	public Calendar getData() {
+		return data;
 	}
 
-	public void setDataConsulta(Calendar dataConsulta) {
-		this.dataConsulta = dataConsulta;
+	public void setData(Calendar data) {
+		this.data = data;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dataConsulta == null) ? 0 : dataConsulta.hashCode());
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + medico;
 		result = prime * result + paciente;
 		return result;
@@ -64,10 +65,10 @@ public class ConsultaPK implements Serializable	{
 		if (getClass() != obj.getClass())
 			return false;
 		ConsultaPK other = (ConsultaPK) obj;
-		if (dataConsulta == null) {
-			if (other.dataConsulta != null)
+		if (data == null) {
+			if (other.data != null)
 				return false;
-		} else if (!dataConsulta.equals(other.dataConsulta))
+		} else if (!data.equals(other.data))
 			return false;
 		if (medico != other.medico)
 			return false;
@@ -75,7 +76,7 @@ public class ConsultaPK implements Serializable	{
 			return false;
 		return true;
 	}
-
+	
 	
 	
 }

@@ -2,9 +2,9 @@ package br.com.fiap.jpa.entity;
 
 import java.io.Serializable;
 
-//CLASSE QUE DECLARA OS ATRIBUTOS QUE FORMAM A CHAVE COMPOSTA
-//OBRIGATÓRIO IMPLEMENTAR Serializable
-public class ContaCorrentePK implements Serializable{
+//Classe que declara os atributos que formam a chave composta
+//Obrigatório implementar Serializable
+public class ContaCorrentePK implements Serializable {
 
 	private int numero;
 	
@@ -13,7 +13,7 @@ public class ContaCorrentePK implements Serializable{
 	public ContaCorrentePK() {
 		super();
 	}
-	
+
 	public ContaCorrentePK(int numero, int agencia) {
 		super();
 		this.numero = numero;

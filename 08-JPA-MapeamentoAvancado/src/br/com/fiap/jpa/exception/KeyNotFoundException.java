@@ -1,6 +1,6 @@
 package br.com.fiap.jpa.exception;
 
-public class KeyNotFoundException extends Exception{
+public class KeyNotFoundException extends Exception {
 
 	public KeyNotFoundException() {
 		super();
@@ -12,18 +12,18 @@ public class KeyNotFoundException extends Exception{
 		// TODO Auto-generated constructor stub
 	}
 
-	public KeyNotFoundException(String message, Throwable cause) {
-		super(message, cause);
+	public KeyNotFoundException(String arg0, Throwable arg1) {
+		super(arg0, arg1);
 		// TODO Auto-generated constructor stub
 	}
 
-	public KeyNotFoundException(String message) {
-		super(message);
+	public KeyNotFoundException(String arg0) {
+		super(arg0);
 		// TODO Auto-generated constructor stub
 	}
 
-	public KeyNotFoundException(Throwable cause) {
-		super(cause);
+	public KeyNotFoundException(Throwable arg0) {
+		super(arg0);
 		// TODO Auto-generated constructor stub
 	}
 

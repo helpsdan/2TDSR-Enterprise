@@ -28,9 +28,10 @@ public class Consulta {
 	@JoinColumn(name="cd_paciente")
 	private Paciente paciente;
 	
-	@Temporal(TemporalType.DATE)
+	@Id
 	@Column(name="dt_consulta")
-	private Calendar dataConsulta;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar data;
 	
 	@Column(name="st_convenio")
 	private boolean convenio;
@@ -38,16 +39,18 @@ public class Consulta {
 	@Column(name="ds_consultorio")
 	private String consultorio;
 
-	public Consulta() {
+	public Consulta(Medico medico, Paciente paciente, Calendar data, boolean convenio, String consultorio) {
 		super();
-	}
-	
-	public Consulta(Medico medico, Paciente paciente, Calendar dataConsulta, boolean convenio, String consultorio) {
 		this.medico = medico;
 		this.paciente = paciente;
-		this.dataConsulta = dataConsulta;
+		this.data = data;
 		this.convenio = convenio;
 		this.consultorio = consultorio;
+	}
+
+	public Consulta() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Medico getMedico() {
@@ -66,12 +69,12 @@ public class Consulta {
 		this.paciente = paciente;
 	}
 
-	public Calendar getDataConsulta() {
-		return dataConsulta;
+	public Calendar getData() {
+		return data;
 	}
 
-	public void setDataConsulta(Calendar dataConsulta) {
-		this.dataConsulta = dataConsulta;
+	public void setData(Calendar data) {
+		this.data = data;
 	}
 
 	public boolean isConvenio() {
@@ -90,8 +93,4 @@ public class Consulta {
 		this.consultorio = consultorio;
 	}
 	
-			
-	
-	
 }
-

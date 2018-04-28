@@ -1,4 +1,4 @@
-package br.com.fiap.jpa.entity.teste;
+package br.com.fiap.jpa.teste;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -17,16 +17,16 @@ import br.com.fiap.jpa.entity.Paciente;
 import br.com.fiap.jpa.exception.CommitException;
 import br.com.fiap.jpa.singleton.EntityManagerFactorySingleton;
 
-public class CadastroTeste {
+public class ChaveCompostaTeste {
 
 	public static void main(String[] args) {
 		EntityManagerFactory fabrica = EntityManagerFactorySingleton.getInstance();
 		EntityManager em = fabrica.createEntityManager();
 
 		ContaCorrenteDAO dao = new ContaCorrenteDAOImpl(em);
-
-		ContaCorrente cc = new ContaCorrente(1, 1, 100, new GregorianCalendar(2010, Calendar.MARCH, 20));
-
+		ContaCorrente cc = new ContaCorrente(1, 1, 100, 
+				new GregorianCalendar(2010, Calendar.MARCH, 20));
+		
 		try {
 			dao.create(cc);
 			dao.commit();
@@ -34,23 +34,22 @@ public class CadastroTeste {
 			e.printStackTrace();
 		}
 		
-		Medico medico = new Medico(123, "jão");
-		Paciente paciente = new Paciente("maria", new GregorianCalendar(1999, Calendar.NOVEMBER,11));
-		Consulta consulta = new Consulta(medico, paciente, Calendar.getInstance(), true, "21A");
+		Medico medico = new Medico(123,10000, 123, "João");
+		Paciente paciente = new Paciente("Maria",
+				new GregorianCalendar(1999, Calendar.JULY, 2));
+		Consulta consulta = new Consulta(medico, paciente,
+				Calendar.getInstance(), true, "2A");
 		
-		ConsultaDAO consultaDAO = new ConsultaDAOImpl(em);
-		
-		
+		ConsultaDAO consultaDao = new ConsultaDAOImpl(em);
 		try {
-			consultaDAO.create(consulta);
-			consultaDAO.commit();
+			consultaDao.create(consulta);
+			consultaDao.commit();
 		} catch (CommitException e) {
 			e.printStackTrace();
-		}		
+		}
 		
 		em.close();
 		fabrica.close();
-		
 	}
-
+	
 }

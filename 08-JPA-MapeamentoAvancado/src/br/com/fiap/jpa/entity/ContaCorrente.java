@@ -18,22 +18,22 @@ public class ContaCorrente {
 	@Id
 	@Column(name="nr_conta")
 	private int numero;
-
+	
 	@Id
 	@Column(name="nr_agencia")
 	private int agencia;
-
-	@Column(name="vl_saldo", nullable=false)
+	
+	@Column(name="vl_saldo",nullable=false)
 	private double saldo;
-
-	@Temporal(TemporalType.DATE)
+	
 	@Column(name="dt_abertura")
+	@Temporal(TemporalType.DATE)
 	private Calendar dataAbertura;
-
+	
 	public ContaCorrente() {
 		super();
 	}
-	
+
 	public ContaCorrente(int numero, int agencia, double saldo, Calendar dataAbertura) {
 		super();
 		this.numero = numero;
@@ -50,12 +50,12 @@ public class ContaCorrente {
 		this.numero = numero;
 	}
 
-	public int getConta() {
+	public int getAgencia() {
 		return agencia;
 	}
 
-	public void setConta(int conta) {
-		this.agencia = conta;
+	public void setAgencia(int agencia) {
+		this.agencia = agencia;
 	}
 
 	public double getSaldo() {
@@ -73,5 +73,5 @@ public class ContaCorrente {
 	public void setDataAbertura(Calendar dataAbertura) {
 		this.dataAbertura = dataAbertura;
 	}
-
+	
 }
